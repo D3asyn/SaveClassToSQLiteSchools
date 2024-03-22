@@ -36,7 +36,7 @@ namespace DBClassSaveAndStuff
                 Console.WriteLine("4. Get All Schools");
                 Console.WriteLine("q. Exit");
                 Console.WriteLine("--------------");
-                Console.WriteLine(@"Hint: AddSchool es UpdateSchoolnal spammeld a azt hogy 'test' mert sok variable van :)");
+                Console.WriteLine(@"Hint: AddSchool es UpdateSchoolnal spammeld a azt hogy 'test' vagy 't' mert sok variable van :)");
                 Console.WriteLine("--------------");
                 Console.Write("Enter your choice: ");
                 string? choice = Console.ReadLine();
@@ -245,6 +245,12 @@ namespace DBClassSaveAndStuff
                 {
                     deleteCommand.Parameters.AddWithValue("@Id", id);
                     deleteCommand.ExecuteNonQuery();
+                }
+
+                string resetQuery = "DELETE FROM sqlite_sequence WHERE name = 'School';";
+                using (var resetCommand = new SQLiteCommand(resetQuery, connection))
+                {
+                    resetCommand.ExecuteNonQuery();
                 }
             }
         }
