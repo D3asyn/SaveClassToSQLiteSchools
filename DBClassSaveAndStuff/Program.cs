@@ -246,12 +246,6 @@ namespace DBClassSaveAndStuff
                     deleteCommand.Parameters.AddWithValue("@Id", id);
                     deleteCommand.ExecuteNonQuery();
                 }
-
-                string resetQuery = "DELETE FROM sqlite_sequence WHERE name = 'School';";
-                using (var resetCommand = new SQLiteCommand(resetQuery, connection))
-                {
-                    resetCommand.ExecuteNonQuery();
-                }
             }
         }
         static void UpdateSchool(School school)
